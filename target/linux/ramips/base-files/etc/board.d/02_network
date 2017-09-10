@@ -132,6 +132,8 @@ ramips_setup_interfaces()
 	awm002-evb|\
 	awm003-evb|\
 	c20i|\
+	c2|\
+	c50|\
 	dir-645|\
 	f5d8235-v2|\
 	gl-mt300a|\

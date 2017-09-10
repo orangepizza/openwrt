@@ -89,6 +89,13 @@ c20i)
 	set_usb_led "$board:blue:usb" "2-1"
 	ucidef_set_led_wlan "wlan" "wlan" "$board:blue:wlan" "phy0radio"
 	;;
+c2)
+	ucidef_set_led_switch "lan" "lan" "$board:green:lan" "switch0" "0x1e"
+	ucidef_set_led_switch "wan" "wan" "$board:green:wan" "switch0" "0x01"
+	set_usb_led "$board:green:usb" "2-1"
+	ucidef_set_led_wlan "wlan" "wlan" "$board:green:wlan" "phy0radio"
+	ucidef_set_led_default "wps" "wps" "$board:green:wps" "0"
+	;;
 c50)
 	ucidef_set_led_switch "lan" "lan" "$board:green:lan" "switch0" "0x1e"
 	ucidef_set_led_switch "wan" "wan" "$board:green:wan" "switch0" "0x01"
