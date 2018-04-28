@@ -36,7 +36,7 @@ detect_rai0() {
 	uci get wireless.rai0 >/dev/null 2>&1 && return
 	ifconfig rai0 >/dev/null 2>&1 || return
 	echo " > rai0 config not found, load default" >>/tmp/wifi.log
-	cat <<EOF
+	cat <<EOF >> /etc/config/wireless
 config wifi-device rai0
 	option type rai0
 	option vendor ralink
@@ -50,7 +50,7 @@ config wifi-iface default_rai0
 	option ifname rai0
 	option network lan
 	option mode ap
-	option ssid OpenWrt_5G
+	option ssid LEDE_5G
 	option encryption none
 
 EOF
