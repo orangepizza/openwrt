@@ -10,20 +10,19 @@ Signed-off-by: John Crispin <blogic@openwrt.org>
 
 --- a/drivers/usb/dwc2/hcd.c
 +++ b/drivers/usb/dwc2/hcd.c
-@@ -48,6 +48,7 @@
+@@ -46,6 +46,7 @@
  #include <linux/io.h>
  #include <linux/slab.h>
  #include <linux/usb.h>
 +#include <linux/reset.h>
- 
+
  #include <linux/usb/hcd.h>
  #include <linux/usb/ch11.h>
-@@ -5215,6 +5216,8 @@ int dwc2_hcd_init(struct dwc2_hsotg *hso
- 
+@@ -5145,6 +5146,8 @@ int dwc2_hcd_init(struct dwc2_hsotg *hso
+
  	retval = -ENOMEM;
- 
+
 +	device_reset(hsotg->dev);
 +
- 	hcfg = dwc2_readl(hsotg->regs + HCFG);
+ 	hcfg = dwc2_readl(hsotg, HCFG);
  	dev_dbg(hsotg->dev, "hcfg=%08x\n", hcfg);
- 
