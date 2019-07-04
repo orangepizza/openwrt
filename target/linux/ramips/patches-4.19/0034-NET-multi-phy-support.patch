@@ -49,10 +49,11 @@ Signed-off-by: John Crispin <blogic@openwrt.org>
  		break;
 --- a/include/linux/phy.h
 +++ b/include/linux/phy.h
-@@ -412,5 +412,6 @@ struct phy_device {
-  unsigned suspended:1;
-  unsigned sysfs_links:1;
-  unsigned loopback_enabled:1;
+@@ -413,6 +413,7 @@
+ 	unsigned suspended:1;
+ 	unsigned sysfs_links:1;
+ 	unsigned loopback_enabled:1;
 +	unsigned no_auto_carrier_off:1;
 
-  unsigned autoneg:1;
+ 	unsigned autoneg:1;
+ 	/* The most recently read link state */
