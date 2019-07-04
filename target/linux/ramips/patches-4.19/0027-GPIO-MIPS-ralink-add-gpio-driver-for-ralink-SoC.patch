@@ -332,14 +332,14 @@ Cc: linux-gpio@vger.kernel.org
 +{
 +	int gpio = chip->base + offset;
 +
-+	return pinctrl_request_gpio(gpio);
++	return pinctrl_gpio_request(gpio);
 +}
 +
 +static void ralink_gpio_free(struct gpio_chip *chip, unsigned offset)
 +{
 +	int gpio = chip->base + offset;
 +
-+	pinctrl_free_gpio(gpio);
++	pinctrl_gpio_free(gpio);
 +}
 +
 +static int ralink_gpio_probe(struct platform_device *pdev)
