@@ -10,7 +10,7 @@ Signed-off-by: John Crispin <blogic@openwrt.org>
 
 --- a/drivers/usb/dwc2/hcd.c
 +++ b/drivers/usb/dwc2/hcd.c
-@@ -46,6 +46,7 @@
+@@ -49,6 +49,7 @@
  #include <linux/io.h>
  #include <linux/slab.h>
  #include <linux/usb.h>
@@ -18,7 +18,7 @@ Signed-off-by: John Crispin <blogic@openwrt.org>
 
  #include <linux/usb/hcd.h>
  #include <linux/usb/ch11.h>
-@@ -5145,6 +5146,8 @@ int dwc2_hcd_init(struct dwc2_hsotg *hso
+@@ -5165,6 +5166,8 @@ int dwc2_hcd_init(struct dwc2_hsotg *hso
 
  	retval = -ENOMEM;
 
