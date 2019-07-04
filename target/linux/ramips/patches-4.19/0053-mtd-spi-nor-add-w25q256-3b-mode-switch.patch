@@ -24,7 +24,7 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
 
  	int	(*quad_enable)(struct spi_nor *nor);
  };
-@@ -240,6 +244,15 @@ static inline u8 spi_nor_convert_3to4_er
+@@ -242,6 +246,15 @@ static inline u8 spi_nor_convert_3to4_er
  				      ARRAY_SIZE(spi_nor_3to4_erase));
  }
 
@@ -40,7 +40,7 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
  static void spi_nor_set_4byte_opcodes(struct spi_nor *nor,
  				      const struct flash_info *info)
  {
-@@ -467,6 +480,36 @@ static int spi_nor_erase_sector(struct s
+@@ -497,6 +510,36 @@ static int spi_nor_erase_sector(struct s
  	return nor->write_reg(nor, nor->erase_opcode, buf, nor->addr_width);
  }
 
@@ -188,7 +188,7 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
  			set_4byte(nor, info, 1);
 --- a/include/linux/mtd/spi-nor.h
 +++ b/include/linux/mtd/spi-nor.h
-@@ -102,6 +102,7 @@
+@@ -105,6 +105,7 @@
  /* Used for Macronix and Winbond flashes. */
  #define SPINOR_OP_EN4B		0xb7	/* Enter 4-byte mode */
  #define SPINOR_OP_EX4B		0xe9	/* Exit 4-byte mode */
@@ -196,7 +196,7 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
 
  /* Used for Spansion flashes only. */
  #define SPINOR_OP_BRWR		0x17	/* Bank register write */
-@@ -229,7 +230,8 @@ enum spi_nor_option_flags {
+@@ -235,7 +236,8 @@ enum spi_nor_option_flags {
  	SNOR_F_S3AN_ADDR_DEFAULT = BIT(3),
  	SNOR_F_READY_XSR_RDY	= BIT(4),
  	SNOR_F_USE_CLSR		= BIT(5),
@@ -205,7 +205,7 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
  };
 
  /**
-@@ -280,6 +282,7 @@ struct spi_nor {
+@@ -296,6 +298,7 @@ struct spi_nor {
  	enum spi_nor_protocol	reg_proto;
  	bool			sst_write_second;
  	u32			flags;
