@@ -10,13 +10,12 @@ Signed-off-by: John Crispin <blogic@openwrt.org>
 
 --- a/drivers/tty/serial/serial_core.c
 +++ b/drivers/tty/serial/serial_core.c
-@@ -428,6 +428,9 @@ uart_get_baud_rate(struct uart_port *por
+@@ -415,6 +415,9 @@ uart_get_baud_rate(struct uart_port *por
  		break;
  	}
- 
+
 +	if (tty_termios_baud_rate(termios) == 2500000)
 +		return 250000;
 +
  	for (try = 0; try < 2; try++) {
  		baud = tty_termios_baud_rate(termios);
- 

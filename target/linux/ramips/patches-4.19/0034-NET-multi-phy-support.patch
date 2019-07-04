@@ -24,9 +24,9 @@ Signed-off-by: John Crispin <blogic@openwrt.org>
  		}
 
 @@ -1053,7 +1056,10 @@ void phy_state_machine(struct work_struc
- 			phy_link_up(phydev);
- 		} else {
- 			phydev->state = PHY_NOLINK;
+			phy_link_up(phydev);
+		} else {
+      phydev->state = PHY_NOLINK;
 -			phy_link_down(phydev, true);
 +			if (!phydev->no_auto_carrier_off)
 +				phy_link_down(phydev, true);
