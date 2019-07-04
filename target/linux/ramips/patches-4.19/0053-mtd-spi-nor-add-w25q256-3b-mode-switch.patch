@@ -13,7 +13,7 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
 ---
 --- a/drivers/mtd/spi-nor/spi-nor.c
 +++ b/drivers/mtd/spi-nor/spi-nor.c
-@@ -89,8 +89,12 @@ struct flash_info {
+@@ -89,6 +89,10 @@ struct flash_info {
  #define NO_CHIP_ERASE		BIT(12) /* Chip does not support chip erase */
  #define SPI_NOR_SKIP_SFDP	BIT(13)	/* Skip parsing of SFDP tables */
  #define USE_CLSR		BIT(14)	/* use CLSR command */
@@ -22,10 +22,8 @@ Signed-off-by: Felix Fietkau <nbd@nbd.name>
 +					 * op code only.
 +					 */
 
-  int	(*quad_enable)(struct spi_nor *nor);
+ 	int	(*quad_enable)(struct spi_nor *nor);
  };
-
- #define JEDEC_MFR(info)	((info)->id[0])
 @@ -240,6 +244,15 @@ static inline u8 spi_nor_convert_3to4_er
  				      ARRAY_SIZE(spi_nor_3to4_erase));
  }
