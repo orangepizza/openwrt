@@ -24,15 +24,6 @@
 #include "mtk_eth_soc.h"
 #include "gsw_mt7620.h"
 
-void mtk_switch_w32(struct mt7620_gsw *gsw, u32 val, unsigned reg)
-{
-	iowrite32(val, gsw->base + reg);
-}
-
-u32 mtk_switch_r32(struct mt7620_gsw *gsw, unsigned reg)
-{
-	return ioread32(gsw->base + reg);
-}
 
 static irqreturn_t gsw_interrupt_mt7621(int irq, void *_priv)
 {
@@ -205,35 +196,6 @@ static const struct of_device_id mediatek_gsw_match[] = {
 	{},
 };
 MODULE_DEVICE_TABLE(of, mediatek_gsw_match);
-
-int mtk_gsw_init(struct fe_priv *priv)
-{
-	struct device_node *np = priv->switch_np;
-	struct platform_device *pdev = of_find_device_by_node(np);
-	struct mt7620_gsw *gsw;
-
-	if (!pdev)
-		return -ENODEV;
-
-	if (!of_device_is_compatible(np, mediatek_gsw_match->compatible))
-		return -EINVAL;
-
-	gsw = platform_get_drvdata(pdev);
-	priv->soc->swpriv = gsw;
-
-	if (gsw->irq) {
-		request_irq(gsw->irq, gsw_interrupt_mt7621, 0,
-			    "gsw", priv);
-		disable_irq(gsw->irq);
-	}
-
-	mt7621_hw_init(gsw, np);
-
-	if (gsw->irq)
-		enable_irq(gsw->irq);
-
-	return 0;
-}
 
 static int mt7621_gsw_probe(struct platform_device *pdev)
 {
